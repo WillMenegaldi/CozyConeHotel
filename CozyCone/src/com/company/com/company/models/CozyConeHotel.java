@@ -9,7 +9,7 @@ public class CozyConeHotel
 {
     private static CozyConeHotel cozyCone = new CozyConeHotel();
     private List<IShapeCone> listaCones;
-    private List listaEspera;
+    private static List<Carro> listaEspera;
 
     private CozyConeHotel() {
         listaCones = new ArrayList<>();
