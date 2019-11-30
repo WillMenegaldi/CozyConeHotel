@@ -5,5 +5,5 @@ import com.company.TipoCone;
 
 public interface ICone
 {
-    Cone criarCone(TipoCone tipoCone);
+    Cone reservarCone(TipoCone tipoCone);
 }

@@ -1,11 +1,9 @@
 package com.company;
 
-import com.company.interfaces.ICone;
-
-public class ConeComVaranda extends Cone implements ICone
+public class ConeComVaranda extends Cone
 {
-    @Override
-    public Cone criarCone(TipoCone tipoCone) {
+    public Cone reservarCone()
+    {
         return new ConeComVaranda();
     }
 }

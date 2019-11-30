@@ -1,11 +1,8 @@
 package com.company;
 
-import com.company.interfaces.ICone;
-
-public class ConeSimples extends Cone implements ICone
+public class ConeSimples extends Cone
 {
-    @Override
-    public Cone criarCone(TipoCone tipoCone)
+    public Cone reservarCone()
     {
         return new ConeSimples();
     }
