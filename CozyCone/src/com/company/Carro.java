@@ -47,6 +47,6 @@ public class Carro implements ICarro
     @Override
     public void update()
     {
-        status = Status.Hospedado;
+        System.out.println("Pronto para ser hospedado em CozyCone.");
     }
 }
