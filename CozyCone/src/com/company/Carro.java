@@ -2,11 +2,14 @@ package com.company;
 
 import com.company.interfaces.ICarro;
 
+import java.util.UUID;
+
 public class Carro implements ICarro
 {
     private String modelo;
     private String cor;
     private Status status;
+    private String id;
 
     public String getModelo()
     {
@@ -38,10 +41,16 @@ public class Carro implements ICarro
         this.status = status;
     }
 
+    public String getId()
+    {
+        return id;
+    }
+
     public Carro(String modelo, String cor)
     {
         this.modelo = modelo;
         this.cor = cor;
+        this.id = UUID.randomUUID().toString();
     }
 
     @Override
