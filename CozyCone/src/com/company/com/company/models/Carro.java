@@ -1,5 +1,6 @@
-package com.company;
+package com.company.models;
 
+import com.company.enums.Status;
 import com.company.interfaces.ICarro;
 
 public class Carro implements ICarro
