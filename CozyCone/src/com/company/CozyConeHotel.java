@@ -5,8 +5,8 @@ import java.util.List;
 public class CozyConeHotel
 {
     private static CozyConeHotel cozyCone = new CozyConeHotel();
-    private static List listaCones;
-    private static List listaEspera;
+    private static List<Cone> listaCones;
+    private static List<Carro> listaEspera;
 
     private CozyConeHotel() {}
 
