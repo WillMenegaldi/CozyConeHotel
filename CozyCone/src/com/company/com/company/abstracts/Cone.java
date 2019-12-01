@@ -1,10 +1,9 @@
 package com.company.com.company.abstracts;
 
 import com.company.com.company.enums.ETipoCone;
-import com.company.com.company.interfaces.ICone;
-import com.company.interfaces.IShapeCone;
+import com.company.com.company.interfaces.IShapeCone;
 
-public class Cone implements IShapeCone, ICone
+public class Cone implements IShapeCone
 {
     private ETipoCone tipoCone;
 
@@ -23,10 +22,5 @@ public class Cone implements IShapeCone, ICone
     public String toString()
     {
         return "Tipo : " + this.getTipoCone().getDescricao() + "\nAdicionais :::: \n";
-    }
-
-    @Override
-    public Cone reservarCone(ETipoCone ETipoCone) {
-        return null;
     }
 }

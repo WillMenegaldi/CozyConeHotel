@@ -9,12 +9,13 @@ import com.company.com.company.models.ConeSimples;
 public class ConeFactory implements ICone
 {
     @Override
-    public Cone reservarCone(ETipoCone tipoCone) {
+    public Cone reservarCone(ETipoCone tipoCone)
+    {
         switch (tipoCone)
         {
-            case CONE_SIMPLES:
+            case ConeSimples:
                 return new ConeSimples();
-            case CONE_COM_VARANDA:
+            case ConeComVaranda:
                 return new ConeComVaranda();
             default:
                 return null;

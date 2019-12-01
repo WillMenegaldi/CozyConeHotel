@@ -6,8 +6,6 @@ import com.company.com.company.utils.ConeFactory;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.company.com.company.enums.ETipoCone.CONE_COM_VARANDA;
-import static com.company.com.company.enums.ETipoCone.CONE_SIMPLES;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestFactory {
@@ -20,12 +18,12 @@ public class TestFactory {
 
     @Test
     public void createConeSimples(){
-        helper(CONE_SIMPLES);
+        helper(ETipoCone.ConeSimples);
     }
 
     @Test
     public void createConeComVaranda(){
-        helper(CONE_COM_VARANDA);
+        helper(ETipoCone.ConeComVaranda);
     }
 
     private void helper(ETipoCone tipo){

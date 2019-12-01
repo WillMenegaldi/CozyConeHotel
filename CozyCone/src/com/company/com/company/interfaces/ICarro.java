@@ -1,4 +1,4 @@
-package com.company.interfaces;
+package com.company.com.company.interfaces;
 
 public interface ICarro
 {

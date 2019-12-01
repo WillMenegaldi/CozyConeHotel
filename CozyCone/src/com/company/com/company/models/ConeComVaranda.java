@@ -12,7 +12,7 @@ public class ConeComVaranda extends Cone
 
     @Override
     public ETipoCone getTipoCone() {
-        return ETipoCone.CONE_COM_VARANDA;
+        return ETipoCone.ConeComVaranda;
     }
 
     @Override

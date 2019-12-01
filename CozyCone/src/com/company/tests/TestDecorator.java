@@ -1,10 +1,10 @@
 package com.company.tests;
 
-import com.company.decorators.BreakFast;
-import com.company.decorators.MiniFridge;
-import com.company.decorators.SpaSpace;
+import com.company.com.company.decorators.BreakFast;
+import com.company.com.company.decorators.MiniFridge;
+import com.company.com.company.decorators.SpaSpace;
 import com.company.com.company.enums.ETipoCone;
-import com.company.interfaces.IShapeCone;
+import com.company.com.company.interfaces.IShapeCone;
 import com.company.com.company.utils.ConeFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +22,7 @@ public class TestDecorator {
 
     @Test
     public void addComponentConeSimples(){
-        cone = factory.reservarCone(ETipoCone.CONE_SIMPLES);
+        cone = factory.reservarCone(ETipoCone.ConeSimples);
 
         IShapeCone coneDecorado = new BreakFast(cone); // diaria480 + 20 do cafe
         Double esperado = 500D;
@@ -32,7 +32,7 @@ public class TestDecorator {
 
     @Test
     public void addComponentConeVaranda(){
-        cone = factory.reservarCone(ETipoCone.CONE_COM_VARANDA);
+        cone = factory.reservarCone(ETipoCone.ConeComVaranda);
 
         IShapeCone coneDecorado = new MiniFridge(cone); // diaria480 + 20 do cafe
         Double esperado = 660D;
@@ -42,7 +42,7 @@ public class TestDecorator {
 
     @Test
     public void addMoreComponentConeSimples(){
-        cone = factory.reservarCone(ETipoCone.CONE_SIMPLES);
+        cone = factory.reservarCone(ETipoCone.ConeSimples);
 
         IShapeCone coneDecorado = new BreakFast(cone); // diaria480 + 20 do cafe
         coneDecorado = new SpaSpace(coneDecorado);
@@ -54,7 +54,7 @@ public class TestDecorator {
 
     @Test
     public void addMoreComponentConeVaranda(){
-        cone = factory.reservarCone(ETipoCone.CONE_COM_VARANDA);
+        cone = factory.reservarCone(ETipoCone.ConeComVaranda);
 
         IShapeCone coneDecorado = new MiniFridge(cone); // diaria480 + 20 do cafe
         coneDecorado = new SpaSpace(coneDecorado);

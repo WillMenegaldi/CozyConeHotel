@@ -1,7 +1,7 @@
-package com.company.decorators;
+package com.company.com.company.decorators;
 
-import com.company.abstracts.ShapeConeDecorator;
-import com.company.interfaces.IShapeCone;
+import com.company.com.company.abstracts.ShapeConeDecorator;
+import com.company.com.company.interfaces.IShapeCone;
 
 public class MiniFridge extends ShapeConeDecorator {
     public MiniFridge(IShapeCone decoratedIShapeCone) {

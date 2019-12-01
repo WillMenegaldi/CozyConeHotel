@@ -12,7 +12,7 @@ public class ConeSimples extends Cone
 
     @Override
     public ETipoCone getTipoCone() {
-        return ETipoCone.CONE_SIMPLES;
+        return ETipoCone.ConeSimples;
     }
 
     @Override

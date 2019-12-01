@@ -1,7 +1,7 @@
 package com.company.com.company.models;
 
 import com.company.com.company.enums.EStatus;
-import com.company.interfaces.ICarro;
+import com.company.com.company.interfaces.ICarro;
 
 import java.util.*;
 
