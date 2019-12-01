@@ -74,6 +74,6 @@ public class Carro implements ICarro
     @Override
     public void update(String modelo, String cor)
     {
-        System.out.println("Pronto para ser hospedado em CozyCone: \t\t\t" + modelo + " - " + cor);
+        System.out.println("Pronto para ser hospedado em CozyCone: " + modelo + " - " + cor);
     }
 }

@@ -25,9 +25,9 @@ public class PartyCone extends ShapeConeDecorator
         switch (tipoCone)
         {
             case ConeSimples:
-                return super.getPrecoDiaria() * 1.4D;
+                return (super.getPrecoDiaria() * 1.4D);
             case ConeComVaranda:
-                return super.getPrecoDiaria() * 1.3D;
+                return (super.getPrecoDiaria() * 1.3D);
             default:
                 return super.getPrecoDiaria();
         }

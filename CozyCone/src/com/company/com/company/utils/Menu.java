@@ -15,7 +15,7 @@ public class Menu
         int opcao = 0;
         do
         {
-            System.out.println("1 - Check-in ");
+            System.out.println("\n1 - Check-in ");
             System.out.println("2 - Check-out ");
             System.out.println("3 - Listar opções e preços");
             System.out.println("0 - Sair ");
@@ -55,8 +55,8 @@ public class Menu
 
     private void listarPrecos()
     {
-        System.out.println("\n\nCone sem varanda:\t\t R$480,00");
-        System.out.println("Cone com varanda:\t\t R$620,00");
+        System.out.println("\n\nCone Simples:\t\t R$480,00");
+        System.out.println("Cone Com Varanda:\t\t R$620,00");
         System.out.println("\nCafé da manhã:\t\t\t+ R$20,00");
         System.out.println("Frigo Bar:\t\t\t\t+ R$20,00");
         System.out.println("Espaço de SPA:\t\t\t+ R$20,00");
