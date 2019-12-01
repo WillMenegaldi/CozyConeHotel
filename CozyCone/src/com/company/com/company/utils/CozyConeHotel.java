@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class CozyConeHotel implements ICozyConeHotel
 {
     private static CozyConeHotel cozyCone = new CozyConeHotel();
-    private static final int QUANTIDADE_TOTAL_CONES = 5;
+    private static final int QUANTIDADE_TOTAL_CONES = 2;
     private static List<Carro> listaCarros = new ArrayList<Carro>();
     private static int quantidadeConesOcupados;
 
@@ -28,11 +28,11 @@ public class CozyConeHotel implements ICozyConeHotel
         return cozyCone;
     }
 
-    private static List<Carro> obterCarrosEmEspera()
+    private static List<Carro> obterCarrosPorStatus(EStatus status)
     {
         return listaCarros
             .stream()
-            .filter(c -> c.getStatus().equals(EStatus.EsperandoCheckIn))
+            .filter(c -> c.getStatus().equals(status))
             .collect(Collectors.toList());
     }
 
@@ -46,20 +46,7 @@ public class CozyConeHotel implements ICozyConeHotel
     public static boolean possuiVagasDisponiveis()
     {
         return quantidadeConesOcupados <= QUANTIDADE_TOTAL_CONES;
-    }
-
-    public void realizarCheckOut(Carro carro)
-    {
-        for(Carro c : listaCarros)
-        {
-            if(c.getId().equals(carro.getId()))
-                c.setStatus(EStatus.CheckoutRealizado);
-        }
-        getPartyCone();
-        System.out.println("CheckOut realizado");
-
-        notificarCarros();
-    }
+    } // '<=' pois o carro ja foi adicionado à lista
 
     public void realizarCheckIn(Carro carro, ETipoCone tipoCone)
     {
@@ -69,33 +56,52 @@ public class CozyConeHotel implements ICozyConeHotel
             IShapeCone coneDecorator = cone.reservarCone(tipoCone);
             carro.setStatus(EStatus.Hospedado);
 
-            addComponentes(coneDecorator);
+            adicionarServicos(coneDecorator);
 
-            System.out.println("CheckIn realizado com sucesso!");
+            System.out.println("\nCheckIn realizado com sucesso!\n");
         }
         else
         {
             carro.setStatus(EStatus.EsperandoCheckIn);
-            System.out.println("Todos os cones estao ocupados. Voce sera encaminhado para uma lista de espera.");
+            System.out.println("\nTodos os cones estao ocupados. Voce sera encaminhado para uma lista de espera e notificado quando for sua vez.\n");
         }
+    }
+
+    public void realizarCheckOut()
+    {
+        Carro carro = obterCarroHospedadoAleatorio();
+
+        for(Carro c : listaCarros)
+            if(c.getId().equals(carro.getId()))
+                c.setStatus(EStatus.CheckoutRealizado);
+
+        System.out.println("\n");
+        getPartyCone();
+        notificarCarros();
+    }
+
+    public static Carro obterCarroHospedadoAleatorio()
+    {
+        List<Carro> carrosHospedados = obterCarrosPorStatus(EStatus.Hospedado);
+        int posicao = (int) (Math.random() * carrosHospedados.size());
+
+        return carrosHospedados.get(posicao);
     }
 
     @Override
     public void notificarCarros()
     {
-        List<Carro> carrosEmEspera = obterCarrosEmEspera();
-
-        for(Carro carro : carrosEmEspera)
+        for(Carro carro : obterCarrosPorStatus(EStatus.EsperandoCheckIn))
         {
             carro.setStatus(EStatus.Hospedado);
-            carro.update();
+            carro.update(carro.getModelo(), carro.getCor());
         }
     }
 
-    private IShapeCone addComponentes(IShapeCone cone)
+    private IShapeCone adicionarServicos(IShapeCone cone)
     {
         String resposta = "";
-        System.out.println("Digite (Sim) para aceitar os acrescimos ou (Nao) para rejeitar");
+        System.out.println("\nDigite (Sim) para aceitar os acrescimos ou (Nao) para rejeitar");
 
         resposta = Menu.receberString("Café da manhã:\t+ R$ 20,00 ?");
 
@@ -120,11 +126,11 @@ public class CozyConeHotel implements ICozyConeHotel
         IShapeCone cone = new Cone();
         String resposta = "";
 
-        resposta = Menu.receberString("Digite (Sim) caso tenha dado uma festa ou (Nao) para caso não tenha realizado!");
+        resposta = Menu.receberString("\nDigite (Sim) caso tenha dado uma festa ou (Nao) para caso não tenha realizado!");
 
         if(resposta.equalsIgnoreCase("Sim"))
         {
-            int opcao = Menu.receberInt("Qual tipo de cone você está hospedado:\n1 - Cone Simples\n2 - Cone Com Varandas");
+            int opcao = Menu.receberInt("Qual tipo de cone você está hospedado:\n1 - Cone Simples\n2 - Cone Com Varanda");
 
             if(opcao == 1)
                 cone = new PartyCone(cone, ETipoCone.ConeSimples);

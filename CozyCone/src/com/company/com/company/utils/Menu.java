@@ -20,14 +20,16 @@ public class Menu
             System.out.println("3 - Listar opções e preços");
             System.out.println("0 - Sair ");
 
-            opcao = receberInt("Digite o indice desejado:");
+            opcao = receberInt("\nDigite a opcao desejada:");
+
             Carro carro = new Carro(Carro.gerarModeloCarro(), Carro.gerarCorCarro());
+            System.out.println("\nCarro: " + carro.getModelo() + " - " + carro.getCor() + "\n");
             hotel.adicionarCarro(carro);
 
             switch (opcao)
             {
                 case 1:
-                    int opcaoTipoCone = receberInt("Qual tipo de cone voce deseja?\n 1 - Cone Simples\n2 - Cone Com Varanda");
+                    int opcaoTipoCone = receberInt("\nQual tipo de cone voce deseja?\n1 - Cone Simples\n2 - Cone Com Varanda");
                     if(opcaoTipoCone > 0 && opcaoTipoCone < 3)
                     {
                         if(opcaoTipoCone == 1)
@@ -37,7 +39,7 @@ public class Menu
                     }
                     break;
                 case 2:
-                    hotel.realizarCheckOut(carro);
+                    hotel.realizarCheckOut();
                     break;
                 case 3:
                     listarPrecos();

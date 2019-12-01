@@ -7,7 +7,7 @@ public class ConeSimples extends Cone
 {
     public ConeSimples()
     {
-        System.out.println("Cone Simples");
+        System.out.println("Escolha Realizada: Cone Simples");
     }
 
     @Override

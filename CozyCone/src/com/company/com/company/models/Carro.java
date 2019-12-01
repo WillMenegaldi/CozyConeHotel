@@ -9,7 +9,7 @@ public class Carro implements ICarro
 {
     private static List<String> modelos = Arrays.asList("Ferrari F8", "Porsche 911", "Lamborghini Veneno", "Lamborghini Veneno",
         "Bugatti Chiron Sport", "Mercedes Exelero", "Bugatti La Voiture Noire", "Aston Martin Valkyrie", "McLaren P1 GTR");
-    private static List<String> cores = Arrays.asList("preto", "branco", "prata", "vermelho");
+    private static List<String> cores = Arrays.asList("Preto", "Branco", "Prata", "Vermelho");
     private String modelo;
     private String cor;
     private EStatus status;
@@ -72,8 +72,8 @@ public class Carro implements ICarro
     }
 
     @Override
-    public void update()
+    public void update(String modelo, String cor)
     {
-        System.out.println("Pronto para ser hospedado em CozyCone.");
+        System.out.println(modelo + " - " + cor + "\t\tPronto para ser hospedado em CozyCone.");
     }
 }
