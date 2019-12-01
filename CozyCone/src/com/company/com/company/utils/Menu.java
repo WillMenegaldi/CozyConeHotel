@@ -1,20 +1,17 @@
-package com.company.com.company.utils;
+package com.company.utils;
 
 import com.company.com.company.models.Carro;
 import com.company.com.company.enums.ETipoCone;
 
 import java.util.Scanner;
 
-public class Menu
-{
+public class Menu {
     private static final Scanner scan = new Scanner(System.in);
     private static CozyConeHotel hotel = CozyConeHotel.getHotel();
 
-    public void menuAplicacao()
-    {
+    public void menuAplicacao() {
         int opcao = 0;
-        do
-        {
+        do {
             System.out.println("\n1 - Check-in ");
             System.out.println("2 - Check-out ");
             System.out.println("3 - Listar opções e preços");
@@ -26,13 +23,11 @@ public class Menu
             System.out.println("\nCarro: " + carro.getModelo() + " - " + carro.getCor() + "\n");
             hotel.adicionarCarro(carro);
 
-            switch (opcao)
-            {
+            switch (opcao) {
                 case 1:
                     int opcaoTipoCone = receberInt("\nQual tipo de cone voce deseja?\n1 - Cone Simples\n2 - Cone Com Varanda");
-                    if(opcaoTipoCone > 0 && opcaoTipoCone < 3)
-                    {
-                        if(opcaoTipoCone == 1)
+                    if (opcaoTipoCone > 0 && opcaoTipoCone < 3) {
+                        if (opcaoTipoCone == 1)
                             hotel.realizarCheckIn(carro, ETipoCone.ConeSimples);
                         else
                             hotel.realizarCheckIn(carro, ETipoCone.ConeComVaranda);
@@ -53,8 +48,7 @@ public class Menu
         } while (opcao != 0);
     }
 
-    private void listarPrecos()
-    {
+    private void listarPrecos() {
         System.out.println("\n\nCone Simples:\t\t R$480,00");
         System.out.println("Cone Com Varanda:\t\t R$620,00");
         System.out.println("\nCafé da manhã:\t\t\t+ R$20,00");
@@ -67,14 +61,12 @@ public class Menu
         scan.nextLine();
     }
 
-    public static int receberInt(String mensagem)
-    {
+    public static int receberInt(String mensagem) {
         System.out.println(mensagem);
         return Integer.parseInt(scan.nextLine());
     }
 
-    public static String receberString(String mensagem)
-    {
+    public static String receberString(String mensagem) {
         System.out.println(mensagem);
         return scan.nextLine();
     }

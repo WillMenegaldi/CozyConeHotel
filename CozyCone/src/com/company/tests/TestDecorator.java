@@ -1,11 +1,11 @@
-package com.company.tests;
+package tests;
 
 import com.company.com.company.decorators.BreakFast;
 import com.company.com.company.decorators.MiniFridge;
 import com.company.com.company.decorators.SpaSpace;
 import com.company.com.company.enums.ETipoCone;
 import com.company.com.company.interfaces.IShapeCone;
-import com.company.com.company.utils.ConeFactory;
+import com.company.utils.ConeFactory;
 import org.junit.Before;
 import org.junit.Test;
 

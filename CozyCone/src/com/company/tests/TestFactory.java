@@ -1,8 +1,8 @@
 package tests;
 
-import com.company.com.company.abstracts.Cone;
+import com.company.models.Cone;
 import com.company.com.company.enums.ETipoCone;
-import com.company.com.company.utils.ConeFactory;
+import com.company.utils.ConeFactory;
 import org.junit.Before;
 import org.junit.Test;
 

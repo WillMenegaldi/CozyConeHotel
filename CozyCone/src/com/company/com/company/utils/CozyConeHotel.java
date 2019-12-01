@@ -1,9 +1,7 @@
-package com.company.com.company.utils;
+package com.company.utils;
 
-import com.company.com.company.abstracts.Cone;
-import com.company.com.company.abstracts.ShapeConeDecorator;
+import com.company.models.Cone;
 import com.company.com.company.decorators.PartyCone;
-import com.company.com.company.decorators.*;
 import com.company.com.company.enums.EStatus;
 import com.company.com.company.enums.ETipoCone;
 import com.company.com.company.interfaces.ICone;
@@ -22,7 +20,7 @@ public class CozyConeHotel implements ICozyConeHotel
     private static CozyConeHotel cozyCone = new CozyConeHotel();
     private static final int QUANTIDADE_TOTAL_CONES = 2;
     private static List<Carro> listaCarros = new ArrayList<Carro>();
-    HashMap<String, IShapeCone> mapCarroCone = new HashMap<String, IShapeCone>();
+    private static Map<String, IShapeCone> mapCarroCone = new HashMap<String, IShapeCone>();
     private static int quantidadeConesOcupados;
 
     private CozyConeHotel() {}
@@ -80,6 +78,7 @@ public class CozyConeHotel implements ICozyConeHotel
             if(c.getId().equals(carro.getId()))
                 c.setStatus(EStatus.CheckoutRealizado);
 
+        System.out.println("\n");
         getPartyCone(carro);
         notificarCarros();
     }
@@ -110,17 +109,17 @@ public class CozyConeHotel implements ICozyConeHotel
         resposta = Menu.receberString("Café da manhã:\t+ R$ 20,00 ?");
 
         if(resposta.equalsIgnoreCase("Sim"))
-            cone = new BreakFast(cone);
+            cone = new com.company.com.company.decorators.BreakFast(cone);
 
         resposta = Menu.receberString("FrigoBar:\t+ R$ 40,00 ?");
 
         if(resposta.equalsIgnoreCase("Sim"))
-            cone = new MiniFridge(cone);
+            cone = new com.company.com.company.decorators.MiniFridge(cone);
 
         resposta = Menu.receberString("Espaço de SPA:\t+ R$ 120,00 ?");
 
         if(resposta.equalsIgnoreCase("Sim"))
-            cone = new SpaSpace(cone);
+            cone = new com.company.com.company.decorators.SpaSpace(cone);
 
         return cone;
     }
@@ -131,7 +130,7 @@ public class CozyConeHotel implements ICozyConeHotel
         String resposta = "";
         IShapeCone coneDecorado = obterCone(carro);
 
-        resposta = Menu.receberString("Digite (Sim) caso tenha dado uma festa ou (Nao) para caso não tenha realizado!");
+        resposta = Menu.receberString("\nDigite (Sim) caso tenha dado uma festa ou (Nao) para caso não tenha realizado!");
 
         if(resposta.equalsIgnoreCase("Sim"))
         {
@@ -152,5 +151,9 @@ public class CozyConeHotel implements ICozyConeHotel
             if(map.getKey().equals(carro.getId()))
                 return map.getValue();
         return null;
+    }
+
+    public static Map<String, IShapeCone> getCarrosCones(){
+        return mapCarroCone;
     }
 }

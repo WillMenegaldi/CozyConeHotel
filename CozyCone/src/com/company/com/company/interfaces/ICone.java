@@ -1,9 +1,8 @@
 package com.company.com.company.interfaces;
 
+import com.company.models.Cone;
 import com.company.com.company.enums.ETipoCone;
-import com.company.com.company.abstracts.Cone;
 
-public interface ICone
-{
+public interface ICone {
     Cone reservarCone(ETipoCone ETipoCone);
 }

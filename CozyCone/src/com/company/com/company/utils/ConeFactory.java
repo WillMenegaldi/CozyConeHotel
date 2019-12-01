@@ -1,6 +1,6 @@
-package com.company.com.company.utils;
+package com.company.utils;
 
-import com.company.com.company.abstracts.Cone;
+import com.company.models.Cone;
 import com.company.com.company.enums.ETipoCone;
 import com.company.com.company.interfaces.ICone;
 import com.company.com.company.models.ConeComVaranda;

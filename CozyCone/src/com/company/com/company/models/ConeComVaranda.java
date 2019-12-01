@@ -1,6 +1,6 @@
 package com.company.com.company.models;
 
-import com.company.com.company.abstracts.Cone;
+import com.company.models.Cone;
 import com.company.com.company.enums.ETipoCone;
 
 public class ConeComVaranda extends Cone
