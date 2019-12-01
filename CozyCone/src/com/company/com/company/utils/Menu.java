@@ -1,41 +1,52 @@
 package com.company.com.company.utils;
 
+import com.company.com.company.enums.EStatus;
+import com.company.com.company.models.Carro;
 import com.company.decorators.BreakFast;
 import com.company.decorators.MiniFridge;
 import com.company.com.company.decorators.PartyCone;
 import com.company.decorators.SpaSpace;
 import com.company.com.company.enums.ETipoCone;
+import com.company.interfaces.ICarro;
 import com.company.interfaces.IShapeCone;
-import com.company.com.company.models.CozyConeHotel;
 
 import java.util.Scanner;
 
-public class Menu {
+public class Menu
+{
     private static final Scanner scan = new Scanner(System.in);
     private static CozyConeHotel hotel = CozyConeHotel.getHotel();
 
-    public void menuAplicacao() {
-        int   resp = 0;
-        do {
-            System.out.println("1 - Check - in ");
-            System.out.println("2 - Check - out ");
-            System.out.println("3 - Listar quartos ocupados");
-            System.out.println("4 - Listar opções e preços");
+    public void menuAplicacao()
+    {
+        int opcao = 0;
+        do
+        {
+            System.out.println("1 - Check-in ");
+            System.out.println("2 - Check-out ");
+            System.out.println("3 - Listar opções e preços");
             System.out.println("0 - Sair ");
 
-            resp = receberInt("Digite o indice desejado:");
+            opcao = receberInt("Digite o indice desejado:");
+            Carro carro = new Carro(Carro.gerarModeloCarro(), Carro.gerarCorCarro());
+            hotel.adicionarCarro(carro);
 
-            switch (resp) {
+            switch (opcao)
+            {
                 case 1:
-                    hotel.addCone(checkIn());
+                    int opcaoTipoCone = receberInt("Qual tipo de cone voce deseja?\n 1 - Cone Simples\n2 - Cone Com Varanda");
+                    if(opcaoTipoCone > 0 && opcaoTipoCone < 3)
+                    {
+                        if(opcaoTipoCone == 1)
+                            System.out.println(hotel.realizarCheckIn(carro, ETipoCone.CONE_SIMPLES));
+                        else
+                            System.out.println(hotel.realizarCheckIn(carro, ETipoCone.CONE_COM_VARANDA));
+                    }
                     break;
                 case 2:
-                    System.out.println(checkOut(receberInt("Digite o número do quarto")));
+                    System.out.println(hotel.realizarCheckOut(carro));
                     break;
                 case 3:
-                    listarQuartosOcupados();
-                    break;
-                case 4:
                     listarPrecos();
                     break;
                 case 0:
@@ -44,10 +55,11 @@ public class Menu {
                     break;
             }
 
-        } while (resp != 0);
+        } while (opcao != 0);
     }
 
-    public IShapeCone checkIn(){
+    /*public IShapeCone checkIn()
+    {
         Integer resp = 0;
         ConeFactory factory = new ConeFactory();
         IShapeCone cone = null;
@@ -58,11 +70,7 @@ public class Menu {
         else
             cone = factory.reservarCone(ETipoCone.CONE_COM_VARANDA);
         return addComponentes(cone);
-    }
-
-    public IShapeCone checkOut(int numeroDoQuarto){
-        return getPartyCone(this.hotel.getListaCones().get(numeroDoQuarto));
-    }
+    }*/
 
     private IShapeCone addComponentes(IShapeCone cone){
         String resp = "";
@@ -108,17 +116,6 @@ public class Menu {
         System.out.println("Festa com varanda: + 30 % " );
     }
 
-    private void listarQuartosOcupados(){
-        String quartosOcupados = "";
-        if(this.hotel.getListaCones().size() == 0){
-            System.out.println("Todos os quartos estão vazios");
-            return;
-        }
-        for(IShapeCone shapeCone: this.hotel.getListaCones())
-            quartosOcupados += this.hotel.getListaCones().indexOf(shapeCone) + " - ";
-        System.out.println(quartosOcupados);
-    }
-
     private static int receberInt(String mensagem) {
         System.out.println(mensagem);
         return Integer.parseInt(scan.nextLine());
@@ -127,5 +124,4 @@ public class Menu {
         System.out.println(mensagem);
         return scan.nextLine();
     }
-
 }

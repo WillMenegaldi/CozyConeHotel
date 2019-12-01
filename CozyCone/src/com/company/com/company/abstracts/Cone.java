@@ -2,14 +2,11 @@ package com.company.com.company.abstracts;
 
 import com.company.com.company.enums.ETipoCone;
 import com.company.com.company.interfaces.ICone;
-import com.company.com.company.models.ConeComVaranda;
 import com.company.interfaces.IShapeCone;
 
 public class Cone implements IShapeCone, ICone
 {
     private ETipoCone tipoCone;
-
-    public Cone() {}
 
     public ETipoCone getTipoCone()
     {
@@ -29,7 +26,7 @@ public class Cone implements IShapeCone, ICone
     }
 
     @Override
-    public ConeComVaranda reservarCone(ETipoCone ETipoCone) {
+    public Cone reservarCone(ETipoCone ETipoCone) {
         return null;
     }
 }
